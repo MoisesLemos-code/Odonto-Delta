@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:remove="all">Confirmação de Orçamento</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h1>
+			Orçamento número: <span th:text="${orcamento.codigo}"> </span>
+		</h1>
+		<p>
+			Data de abertura: <span
+				th:text="${#dates.format(orcamento.data_abertura, 'dd/MM/yyyy hh:mm')}"></span>
+		</p>
+		<p>
+			Cliente: <span th:text="${orcamento.cliente.nome}"></span>
+		</p>
+		<p>
+			Situação do pagamento: <span
+				th:text="${orcamento.pagamentos.status}"></span>
+		</p>
+		<h3>Detalhes do orcamento:</h3>
+		<table border="1">
+			<tr>
+				<th>Peca</th>
+				<th>Quantidade</th>
+				<th>Preço unitário</th>
+				<th>Subtotal</th>
+			</tr>
+			<tr th:each="item : ${orcamento.pecasItens}">
+				<td th:text="${item.peca.descricao}">descrição</td>
+				<td th:text="${item.quantidade}">quantidade</td>
+				<td
+					th:text="${#numbers.formatDecimal(item.valor, 0, 'POINT', 2, 
+      'COMMA')}">preço</td>
+				<td
+					th:text="${#numbers.formatDecimal(item.subTotal, 0, 'POINT', 2, 
+      'COMMA')}">subTotal</td>
+			</tr>
+		</table>
+		
+			<table border="1">
+			<tr>
+				<th>Serviço</th>
+				<th>Quantidade</th>
+				<th>Preço unitário</th>
+				<th>Subtotal</th>
+			</tr>
+			<tr th:each="item : ${orcamento.servicosItens}">
+				<td th:text="${item.servico.descricao}">descrição</td>
+				<td th:text="${item.quantidade}">quantidade</td>
+				<td
+					th:text="${#numbers.formatDecimal(item.valor, 0, 'POINT', 2, 
+      'COMMA')}">preço</td>
+				<td
+					th:text="${#numbers.formatDecimal(item.subTotal, 0, 'POINT', 2, 
+      'COMMA')}">subTotal</td>
+			</tr>
+		</table>
+		
+		<p>
+			Valor total: <span
+				th:text="${#numbers.formatDecimal(orcamento.valorTotal, 0, 'POINT', 2, 
+      'COMMA')}">
+			</span>
+		</p>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
