@@ -11,7 +11,7 @@
   "dependencies": {
     "@mdi/js": "^4.1.95",
     "chartist": "0.11.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-sass": "^4.9.3",
     "sass-loader": "^8.0.2",
     "vee-validate": "^3.3.7",
