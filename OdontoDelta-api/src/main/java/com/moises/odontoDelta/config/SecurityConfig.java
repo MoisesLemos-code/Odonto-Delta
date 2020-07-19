@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.moises.odontoDelta.security.JWTAuthenticationFilter;
 import com.moises.odontoDelta.security.JWTAuthorizationFilter;
@@ -58,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.antMatchers(HttpMethod.GET,PUBLIC_MATCHERS_GET).permitAll()
 			.antMatchers(HttpMethod.POST,PUBLIC_MATCHERS_POST).permitAll()
+			.antMatchers(HttpMethod.POST, "/login").permitAll()
 			.anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
 		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
@@ -74,6 +76,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
 		return source;
 	}
+	
+	 @Bean
+	    public CorsFilter corsFilter() {
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        CorsConfiguration config = new CorsConfiguration();
+	        config.setAllowCredentials(true);
+	        config.setAllowedHeaders(Arrays.asList("X-Requested-With","Origin","Content-Type","Accept","Authorization"));
+	        config.setExposedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
+	                "Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"));
+	        config.addAllowedOrigin("*");
+	        config.addAllowedHeader("*");
+	        config.addAllowedMethod("OPTIONS");
+	        config.addAllowedMethod("GET");
+	        config.addAllowedMethod("POST");
+	        config.addAllowedMethod("PUT");
+	        config.addAllowedMethod("DELETE");
+	        source.registerCorsConfiguration("/**", config);
+	        return new CorsFilter(source);
+	    }
 	
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {

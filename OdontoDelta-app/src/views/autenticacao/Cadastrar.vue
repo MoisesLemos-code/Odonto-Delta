@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import notificacao from "../Notifications";
+import notificacao from "@/components/Notificacao";
 import { mapMutations } from "vuex";
 import { actionTypes, mutationTypes } from "@/commons/constants";
 
@@ -113,17 +113,17 @@ export default {
     ...mapMutations([mutationTypes.SET_NOTIFICACAO]),
     abrirNotificacaoSucesso() {
       this.notificacao = {
-        cor: "secondary",
+        cor: "success",
         mensagem: "Operação realizada com sucesso!",
         mostrar: true
       };
       this.setNotificacao(this.notificacao);
     },
-    abrirNotificacaoErro(err) {
+    abrirNotificacaoErro(data) {
       this.notificacao = {
         cor: "error",
-        titulo: err.msg,
-        mensagem: err.errors[0].message,
+        titulo: data.msg,
+        mensagem: data.errors[0].message,
         mostrar: true
       };
       this.setNotificacao(this.notificacao);
@@ -140,9 +140,9 @@ export default {
 
         await this.$router.push({ path: "/" });
         this.abrirNotificacaoSucesso();
-      } catch (e) {
+      } catch (err) {
         this.loadingBtn = false;
-        this.abrirNotificacaoErro(e.response.data);
+        this.abrirNotificacaoErro(err.response.data);
       }
     }
   }

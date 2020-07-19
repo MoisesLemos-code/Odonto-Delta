@@ -44,8 +44,8 @@
   </div>
 </template>
 <script>
-import notificacao from "./Notifications";
-import atencao from "../components/Atencao";
+import notificacao from "@/components/Notificacao";
+import atencao from "@/components/Atencao";
 import modalComanda from "../components/ModalComanda";
 import { mapMutations, mapState } from "vuex";
 import { actionTypes, mutationTypes } from "@/commons/constants";

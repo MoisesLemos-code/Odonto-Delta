@@ -84,8 +84,7 @@ export default {
     },
 
     async [actionTypes.EFETUAR_LOGIN](context, usuario) {
-        const { data } = await axios.post('usuario/entrar', usuario)
-        return data
+        return await axios.post('login', usuario)
     },
 
     async [actionTypes.EFETUAR_LOGOUT]() {

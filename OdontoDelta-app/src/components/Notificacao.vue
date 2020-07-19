@@ -8,9 +8,9 @@
       v-model="notificacao.mostrar"
     >
       <v-icon class="mr-3" color="white">mdi-bell-plus</v-icon>
-      <div id="body">
+      <div class="body">
         <h4 class="title">{{notificacao.titulo}}</h4>
-        <p class="category">{{notificacao.mensagem}}</p>
+        <p class="msg">{{notificacao.mensagem}}</p>
       </div>
       <v-icon @click="notificacao.mostrar = false" size="16">mdi-close-circle</v-icon>
     </v-snackbar>
@@ -33,13 +33,8 @@ export default {
 </script>
 
 <style scoped>
-#body {
-  display: inline;
+.body {
+  display: inline-block;
   margin: 0;
-}
-#title {
-  font-size: 20px;
-}
-#msg {
 }
 </style>

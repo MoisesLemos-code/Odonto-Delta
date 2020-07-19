@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moises.odontoDelta.dto.CredenciaisDTO;
 
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	private AuthenticationManager authenticationManager;
@@ -66,7 +65,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         @Override
         public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
                 throws IOException, ServletException {
-            response.setStatus(401);
+            response.setStatus(400);
             response.setContentType("application/json"); 
             response.getWriter().append(json());
         }
@@ -74,9 +73,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         private String json() {
             long date = new Date().getTime();
             return "{\"timestamp\": " + date + ", "
-                + "\"status\": 401, "
-                + "\"error\": \"Nao autorizado\", "
-                + "\"message\": \"Nome ou senha invalidos\", "
+                + "\"status\": 400, "
+                + "\"error\": \"Não autorizado\", "
+                + "\"message\": \"Nome ou senha inválidos!\", "
                 + "\"path\": \"/login\"}";
         }
     }

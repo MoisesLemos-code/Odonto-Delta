@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import notificacao from "../Notifications";
+import notificacao from "@/components/Notificacao";
 import { mapMutations, mapState } from "vuex";
 import { actionTypes, mutationTypes } from "../../commons/constants";
 
@@ -60,35 +60,38 @@ export default {
       loadingBtn: false,
       showPassword: false,
       notificacao: {
-        cor: "error",
-        mensagem: "Usuário ou senha inválidos !",
+        cor: "",
+        mensagem: "",
         mostrar: true
       },
       usuario: {
         nome: "",
         senha: ""
       },
-      usuarioAutenticado: {}
+      usuarioAutenticado: {
+        nome: "",
+        token: ""
+      }
     };
   },
   computed: {
-    // ...mapState(["usuarioLogado"])
+    ...mapState(["usuarioLogado"])
   },
   methods: {
-    // ...mapMutations([mutationTypes.SET_USUARIO_LOGADO]),
+    ...mapMutations([mutationTypes.SET_USUARIO_LOGADO]),
     ...mapMutations([mutationTypes.SET_NOTIFICACAO]),
     abrirNotificacaoSucesso() {
       this.notificacao = {
-        cor: "secondary",
+        cor: "success",
         mensagem: "Operação realizada com sucesso !",
         mostrar: true
       };
       this.setNotificacao(this.notificacao);
     },
-    abrirNotificacaoErro() {
+    abrirNotificacaoErro(data) {
       this.notificacao = {
         cor: "error",
-        mensagem: "Usuário ou senha inválidos!",
+        mensagem: data.message,
         mostrar: true
       };
       this.setNotificacao(this.notificacao);
@@ -96,20 +99,22 @@ export default {
     async entrar() {
       try {
         this.loadingBtn = true;
-        this.usuarioAutenticado = await this.$store.dispatch(
+        const { headers } = await this.$store.dispatch(
           actionTypes.EFETUAR_LOGIN,
           this.usuario
         );
-        if (this.usuarioAutenticado) {
+        if (headers.authorization) {
+          this.usuarioAutenticado = {
+            nome: this.usuario.nome,
+            token: headers.authorization
+          };
           this.setUsuarioLogado(this.usuarioAutenticado);
           await this.$router.push({ path: "/inicio" });
           this.abrirNotificacaoSucesso();
-        } else {
-          return this.abrirNotificacaoErro();
         }
-      } catch (e) {
+      } catch (err) {
         this.loadingBtn = false;
-        this.abrirNotificacaoErro();
+        this.abrirNotificacaoErro(err.response.data);
       }
     }
   }
