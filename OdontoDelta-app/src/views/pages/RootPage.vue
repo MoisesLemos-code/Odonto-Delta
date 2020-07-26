@@ -1,250 +1,206 @@
 <template>
-  <v-app>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-  </v-app>
+    <v-app>
+        <v-main>
+            <div class="menu-header">
+                <navigation-drawer/>
+                <toolbar/>
+            </div>
+            <router-view></router-view>
+        </v-main>
+    </v-app>
 </template>
 
 <script>
-export default {};
+    export default {
+        name: 'RootPage',
+    }
 </script>
 
 <style lang="stylus">
-html, body, .application {
-  font-family: 'Open Sans', sans-serif;
-}
+    .menu-header
+        display flex
 
-.notification i.white--text {
-  color: rgb(119, 119, 119) !important;
-}
+    html, body, .application
+        font-family 'Open Sans', sans-serif
 
-.az-table-list tbody tr {
-  border-bottom: 1px solid #e9e9e9;
+    .notification i.white--text
+        color rgb(119, 119, 119) !important
 
-  td {
-    font-weight: 400;
-    height: 40px;
-    color: #777;
-    font-size: 13px;
-  }
-}
+    .az-table-list tbody tr
+        border-bottom 1px solid #e9e9e9
 
-.az-menu .v-list-item__action i {
-  font-size: 15px;
-}
+        td
+            font-weight 400
+            height 40px
+            color #777
+            font-size 13px
 
-.az-container .az-table-list thead tr:first-child th {
-  white-space: normal;
-}
+    .az-menu .v-list-item__action i
+        font-size 15px
 
-.table-actions {
-  text-align: center !important;
+    .az-container .az-table-list thead tr:first-child th
+        white-space normal
 
-  a {
-    color: #777;
-  }
+    .table-actions
+        text-align center !important
 
-  i {
-    font-size: 16px;
-  }
-}
+        a
+            color #777
 
-.v-tooltip__content {
-  padding: 10px;
-  font-size: 12px;
-  opacity: 1 !important;
-  background: #333333 !important;
-  text-align: justify !important;
-  line-height: 1.4;
-}
+        i
+            font-size 16px
 
-.v-tooltip__content.menuable__content__active {
-  max-width: 500px;
-}
+    .v-tooltip__content
+        padding 10px
+        font-size 12px
+        opacity 1 !important
+        background #333333 !important
+        text-align justify !important
+        line-height 1.4
 
-.az-search .input-search {
-  background-color: #fff !important;
-}
+    .v-tooltip__content.menuable__content__active
+        max-width 500px
 
-.az-logo .main {
-  width: 125px;
-  transition: all 0.2s linear;
-}
+    .az-search .input-search
+        background-color #fff !important
 
-.symbol {
-  width: 45px !important;
-  transition: all 0.2s linear;
-}
+    .az-logo .main
+        width 125px
+        transition all .2s linear
 
-.az-about__version {
-  font-size: 9px;
-}
+    .symbol
+        width 45px !important
+        transition all .2s linear
 
-.az-checkbox {
-  .v-icon.material-icons.theme--light {
-    margin-left: 1.8px;
-    margin-top: 1.8px;
-  }
+    .az-about__version
+        font-size 9px
 
-  .v-input--selection-controls__ripple {
-    margin-top: 0;
-    margin-left: 0;
-  }
-}
+    .az-checkbox
+        .v-icon.material-icons.theme--light
+            margin-left 1.8px
+            margin-top 1.8px
 
-.az-form-content {
-  margin-top: 0;
+        .v-input--selection-controls__ripple
+            margin-top 0
+            margin-left 0
 
-  .v-text-field {
-    .v-label {
-      font-size: 14px !important;
-      top: -5px;
-    }
-  }
+    .az-form-content
+        margin-top 0
 
-  .az-date {
-    .v-text-field {
-      .v-label {
-        top: 0;
-      }
-    }
-  }
+        .v-text-field
+            .v-label
+                font-size 14px !important
+                top -5px
 
-  .v-input--radio-group__input {
-    .v-label {
-      font-size: 14px !important;
-      top: -5px;
-    }
-  }
+        .az-date
+            .v-text-field
+                .v-label
+                    top 0
 
-  .col {
-    padding: 8px 12px !important;
-  }
+        .v-input--radio-group__input
+            .v-label
+                font-size 14px !important
+                top -5px
 
-  .v-textarea textarea {
-    max-height: 100px;
-    overflow-y: auto;
-  }
-}
+        .col
+            padding 8px 12px !important
 
-.area-conteudo .v-stepper {
-  box-shadow: none;
+        .v-textarea textarea
+            max-height 100px
+            overflow-y auto
 
-  &__header {
-    align-items: center;
-    flex-wrap: nowrap;
-    position: relative;
-    box-shadow: none;
-  }
+    .area-conteudo .v-stepper
+        box-shadow none
 
-  &__step {
-    text-align: center;
-    flex-direction: column;
-  }
+        &__header
+            align-items center
+            flex-wrap nowrap
+            position relative
+            box-shadow none
 
-  &__step__step {
-    height: 40px;
-    min-width: 40px;
-    width: 40px;
-    font-size: 16px;
-    margin: 0 0 5px;
-  }
+        &__step
+            text-align center
+            flex-direction column
 
-  &__step--active .v-stepper__label, &__step--complete .v-stepper__label {
-    color: var(--v-primary-base) !important;
-    font-weight: 600;
-    text-shadow: none !important;
-  }
-}
+        &__step__step
+            height 40px
+            min-width 40px
+            width 40px
+            font-size 16px
+            margin 0 0 5px
 
-.az-table-list .v-text-field > .v-input__control > .v-input__slot:before {
-  border-color: transparent;
-}
+        &__step--active .v-stepper__label, &__step--complete .v-stepper__label
+            color var(--v-primary-base) !important
+            font-weight 600
+            text-shadow none !important
 
-.simple-table {
-  th, td {
-    border: 1px solid #e7e7e7;
-    border-left: none;
-  }
+    .az-table-list .v-text-field > .v-input__control > .v-input__slot:before
+        border-color transparent
 
-  td {
-    border-top: none;
-  }
 
-  th:first-child, td:first-child {
-    border-left: 1px solid #e7e7e7;
-  }
+    .simple-table
+        th, td
+            border 1px solid #e7e7e7
+            border-left none
 
-  th {
-    height: 38px;
-  }
+        td
+            border-top none
 
-  tr:hover {
-    background: unset !important;
-  }
-}
+        th:first-child, td:first-child
+            border-left 1px solid #e7e7e7
 
-@media (max-width: 500px) {
-  .area-conteudo__linha {
-    .v-stepper__header {
-      height: 102px;
-    }
+        th
+            height 38px
 
-    .v-stepper__step {
-      padding: 0;
-    }
-  }
+        tr:hover
+            background unset !important
 
-  .az-container {
-    margin: 0;
-  }
+    @media (max-width 500px)
+        .area-conteudo__linha
+            .v-stepper__header
+                height 102px
 
-  .az-pagination .az-select-pagination {
-    height: 50px;
-  }
+            .v-stepper__step
+                padding 0
 
-  .az-back-button {
-    margin-bottom: 25px;
-  }
+        .az-container
+            margin 0
 
-  .az-form-content, .az-form {
-    padding: 10px;
-  }
+        .az-pagination .az-select-pagination
+            height 50px
 
-  .v-content {
-    padding-bottom: 0;
-  }
-}
+        .az-back-button
+            margin-bottom 25px
 
-.btn-disabled {
-  cursor: not-allowed;
-}
+        .az-form-content, .az-form
+            padding 10px
 
-.erro-inicializacao {
-  width: 100%;
-  padding: 0;
-  text-align: center;
-  color: #555;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+        .v-content
+            padding-bottom 0
 
-  i {
-    font-size: 36px;
-  }
+    .btn-disabled
+        cursor not-allowed
 
-  p {
-    font-size: 18px;
-    margin: 10px 0 0;
-    font-weight: 600;
-  }
-}
+    .erro-inicializacao
+        width 100%
+        padding 0
+        text-align center
+        color #555
+        height 80vh
+        display flex
+        justify-content center
+        align-items center
 
-.az-template-default .toolbar {
-  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
-  background-color: #fff !important;
-}
+        i
+            font-size 36px
+
+        p
+            font-size 18px
+            margin 10px 0 0
+            font-weight 600
+
+    .az-template-default .toolbar
+        -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
+        background-color: #fff !important
 </style>

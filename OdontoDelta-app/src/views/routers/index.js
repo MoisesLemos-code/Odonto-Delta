@@ -9,7 +9,7 @@ const index = new Router({
             path: '/',
             name: 'Inicial',
             redirect: () => {
-                return { name: 'Main' }
+                return { name: 'Menu Principal' }
             },
         },
         ...comum,

@@ -11,5 +11,15 @@ export default {
             origem: 'Inicial'
         },
         parametros: {}
+    },
+    notificacao: {
+        cor: null,
+        mensagem: null,
+        mostrar: false
+    },
+    usuarioLogado: {
+        codigo: null,
+        nome: null,
+        token: null
     }
 }

@@ -4,6 +4,12 @@ export default {
         BUSCAR_PRODUTO_POR_NOME: 'buscarProdutoPorNome',
         BUSCAR_USUARIO_LOGADO: 'buscarUsuarioLogado'
     },
+    USUARIO: {
+        BUSCAR_TODOS_USUARIOS: 'buscarTodosUsuarios',
+        SALVAR_USUARIO: 'salvarUsuario',
+        EDITAR_USUARIO: 'editarUsuario',
+        BUSCAR_USUARIO_POR_ID: 'buscarUsuarioPorId'
+    },
     ROTULOS_PERSONALIZADOS: {
         GET_ALL_ROTULOS_PERSONALIZADOS: 'getAllRotulosPersonlizados',
     },
@@ -11,10 +17,4 @@ export default {
         BUSCAR_TODOS_RECONHECIMENTOS: 'buscarTodosReconhecimentos',
         INSERIR_RECONHECIMENTO: 'inserirReconhecimento'
     },
-    CONVENIO: {
-        BUSCAR_TODOS_CONVENIOS: 'buscarTodosConvenios',
-        SALVAR_CONVENIO: 'salvarConvenio',
-        EDITAR_CONVENIO: 'editarConvenio',
-        BUSCAR_CONVENIO_POR_ID: 'buscarConvenioPorId'
-    }
 }

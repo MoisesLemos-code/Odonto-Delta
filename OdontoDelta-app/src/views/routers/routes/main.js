@@ -1,7 +1,7 @@
 export default [
     {
         path: '/main',
-        name: 'Main',
+        name: 'Menu Principal',
         component: () => import('@/views/components/MainTemplate'),
     },
 ]

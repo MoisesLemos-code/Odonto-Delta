@@ -6,8 +6,6 @@ import mensagens from './mensagens'
 import mutationTypes from './mutationTypes'
 import notificacoesDefault from './notificacoesDefault'
 import produto from './produto'
-import reconhecimento from './reconhecimento'
-import situacoesConvenio from './situacoesConvenio'
 
 export {
     actionTypes,
@@ -18,6 +16,4 @@ export {
     mutationTypes,
     notificacoesDefault,
     produto,
-    reconhecimento,
-    situacoesConvenio
 }

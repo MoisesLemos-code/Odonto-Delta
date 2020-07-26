@@ -19,6 +19,9 @@ export default {
         SET_LINK_ARQUIVO: 'setLinkArquivo',
         SET_PARAMETROS: 'setParametros'
     },
+    NOTIFICACAO: {
+        SET_NOTIFICACAO: 'setNotificacao',
+    },
     CONVENIO: {
         SET_AUTOCOMPLETE_NOMES_DOS_CONVENIOS: 'setAutocompleteNomesDosConvenios',
         SET_DADOS_GERAIS: 'setDadosGerais',
