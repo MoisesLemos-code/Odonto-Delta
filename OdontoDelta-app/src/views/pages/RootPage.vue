@@ -1,18 +1,14 @@
 <template>
     <v-app>
-        <v-main>
-            <div class="menu-header">
-                <navigation-drawer/>
-                <toolbar/>
-            </div>
-            <router-view></router-view>
-        </v-main>
+                <core-toolbar/>
+                <core-navigation-drawer/>
+                <core-view/>
     </v-app>
 </template>
 
 <script>
     export default {
-        name: 'RootPage',
+        name: 'RootPage'
     }
 </script>
 

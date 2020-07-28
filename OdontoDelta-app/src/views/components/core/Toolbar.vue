@@ -1,4 +1,5 @@
 <template>
+    <v-card flat tile>
     <v-toolbar dense class="core-toolbar">
         <div class="v-toolbar-title">
             <v-btn @click.stop="onClickBtn" icon v-if="responsive">
@@ -33,13 +34,14 @@
                 </router-link>
         </v-toolbar-items>
     </v-toolbar>
+    </v-card>
 </template>
 
 <script>
     import {mapMutations, mapState} from 'vuex'
 
     export default {
-        name: 'toolbar',
+        name: 'core-toolbar',
         data: () => ({
             notifications: [],
             title: null,
@@ -85,5 +87,4 @@
     .v-toolbar-title, .toolbar-items
        display flex
        align-items center
-
 </style>

@@ -50,7 +50,7 @@
     import {actionTypes, mutationTypes} from '@/core/constants'
 
     export default {
-        name: 'navigation-drawer',
+        name: 'core-navigation-drawer',
         components: {notificacao},
         data: () => ({
             logo: '',
