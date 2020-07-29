@@ -18,7 +18,8 @@ export default new Vuetify({
         themes: {
             light: {
                 primary: '#487b9c',
-                secondary: '#487b9c'
+                secondary: '#487b9c',
+                tertiary: '#487b9c'
             }
         }
     },

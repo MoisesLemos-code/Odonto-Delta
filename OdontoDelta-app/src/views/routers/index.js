@@ -1,7 +1,7 @@
 import Router from 'vue-router'
 import goTo from 'vuetify/es5/services/goto'
 import comum from './routes/comum'
-import main from './routes/main'
+import inicio from './routes/Inicio'
 
 const index = new Router({
     routes: [
@@ -9,11 +9,11 @@ const index = new Router({
             path: '/',
             name: 'Inicial',
             redirect: () => {
-                return { name: 'Menu Principal' }
+                return { name: 'Inicio' }
             },
         },
         ...comum,
-        ...main
+        ...inicio
     ],
     scrollBehavior: (to, from, savedPosition) => {
         let scrollTo = 0

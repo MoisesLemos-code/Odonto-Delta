@@ -2,7 +2,7 @@
     <v-card flat tile>
     <v-toolbar dense class="core-toolbar">
         <div class="v-toolbar-title">
-            <v-btn @click.stop="onClickBtn" icon v-if="responsive">
+            <v-btn @click.stop="menuLateral" icon v-if="responsive">
                 <v-icon>mdi-menu</v-icon>
             </v-btn>
             <v-toolbar-title class="toolbar-title-text">{{ title }}</v-toolbar-title>
@@ -38,8 +38,6 @@
 </template>
 
 <script>
-    import {mapMutations, mapState} from 'vuex'
-
     export default {
         name: 'core-toolbar',
         data: () => ({
@@ -70,8 +68,8 @@
                     this.responsiveInput = true
                 }
             },
-            onClickBtn(){
-                alert('modal')
+            menuLateral(){
+                alert('modal mobile')
             }
         }
     }
@@ -80,6 +78,11 @@
 <style lang="stylus" scoped>
     .core-toolbar a
         text-decoration none
+
+    .core-toolbar
+        -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
+        background-color: #fff !important
 
     .toolbar-title-text
         color '#7777'

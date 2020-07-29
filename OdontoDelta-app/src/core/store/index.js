@@ -1,9 +1,9 @@
 import Vuex from 'vuex'
-import { actions, mutations, state } from './comum'
-import usuario from './usuario'
+import { actions, getters, mutations, state } from './comum'
 
 export default new Vuex.Store({
     state,
+    getters,
     mutations,
     actions,
     modules: {

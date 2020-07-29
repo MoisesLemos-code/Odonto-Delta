@@ -29,11 +29,9 @@
             </g>
         </svg>
 
-        <az-call-to-action id="botaoVoltar"
-                           @click="irParaInicio"
-                           css-class="action-primary area-404__botao">
-            Voltar para Início
-        </az-call-to-action>
+        <v-btn  @click="irParaInicio" class="action-primary area-404__botao">
+            Voltar para o Início
+        </v-btn>
     </div>
 </template>
 
@@ -58,7 +56,7 @@
             padding 10px 15px
             border 1px solid var(--v-primary-base)
             background-color var(--v-primary-base) !important
-            color #fff !important
+            color #777 !important
             box-sizing border-box
             margin-right 0
             margin-top 10px

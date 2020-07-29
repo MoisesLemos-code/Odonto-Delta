@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div>
         <v-card-text>
             <p class="text-md-center">Redirecionando para a edição do seus dados cadastrais.</p>
         </v-card-text>
@@ -8,10 +8,6 @@
 
 <script>
     export default {
-        name: 'MainTemplate',
+        name: 'Inicio',
     }
 </script>
-<style lang="stylus" scoped>
-    .main
-        background-color red
-</style>
