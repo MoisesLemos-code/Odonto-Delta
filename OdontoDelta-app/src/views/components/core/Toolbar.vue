@@ -38,13 +38,13 @@
 </template>
 
 <script>
+    import {mutationTypes} from '@/core/constants'
     export default {
         name: 'core-toolbar',
         data: () => ({
             notifications: [],
             title: null,
-            responsive: false,
-            responsiveInput: false
+            responsive: false
         }),
         watch: {
             $route(val) {
@@ -52,7 +52,7 @@
             }
         },
         mounted() {
-            this.onResponsiveInverted();
+            this.onResponsiveInverted()
             window.addEventListener('resize', this.onResponsiveInverted)
         },
         beforeDestroy() {
@@ -62,14 +62,18 @@
             onResponsiveInverted() {
                 if (window.innerWidth < 1150) {
                     this.responsive = true
-                    this.responsiveInput = false
+                    this.$store.commit(mutationTypes.COMUM.SET_MENU_MOBILE_ON)
                 } else {
                     this.responsive = false
-                    this.responsiveInput = true
+                    this.$store.commit(mutationTypes.COMUM.SET_MENU_MOBILE_OFF)
                 }
             },
             menuLateral(){
-                alert('modal mobile')
+                if (this.$store.state.menuLateral) {
+                    this.$store.commit(mutationTypes.COMUM.SET_RETRAIR_MENU_MOBILE)
+                } else {
+                    this.$store.commit(mutationTypes.COMUM.SET_EXPANDIR_MENU_MOBILE)
+                }
             }
         }
     }

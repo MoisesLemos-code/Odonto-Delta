@@ -10,7 +10,7 @@
             &copy;{{ (new Date()).getFullYear() }}
       <v-icon
               color="tertiary"
-              size="20">mdi-pizza</v-icon>
+              size="20">{{this.$vuetify.icons.values.dente}}</v-icon>
     </span>
     </v-footer>
 </template>

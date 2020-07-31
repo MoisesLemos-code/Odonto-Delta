@@ -2,6 +2,9 @@ export default [
     {
         path: '/inicio',
         name: 'Inicio',
-        component: () => import('@/views/pages/Inicio/Inicio.vue'),
+        component: () => import('@/views/pages/inicio/Inicio.vue'),
+        meta: {
+            requiresAuth: true
+        }
     },
 ]

@@ -3,12 +3,16 @@ import Vuetify from 'vuetify/lib'
 import pt from 'vuetify/es5/locale/pt'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
+import iconDente from '@/views/components/icons/iconDente'
 
 Vue.use(Vuetify)
 
 export default new Vuetify({
     icons: {
         iconfont: 'mdi',
+        values: {
+            dente: 'mdi-account'
+        }
     },
     lang: {
         locales: { pt },

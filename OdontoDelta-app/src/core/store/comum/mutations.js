@@ -5,7 +5,27 @@ import FileManagerUtils from '@/core/utils/FileManagerUtils'
 export default {
 
     [mutationTypes.COMUM.SET_EXPANDIR_MENU](state) {
-        Vue.set(state.loki, 'asideClosed', false)
+        state.miniMenuLateral = false
+    },
+
+    [mutationTypes.COMUM.SET_RETRAIR_MENU](state) {
+        state.miniMenuLateral = true
+    },
+
+    [mutationTypes.COMUM.SET_EXPANDIR_MENU_MOBILE](state) {
+        state.menuLateral = true
+    },
+
+    [mutationTypes.COMUM.SET_RETRAIR_MENU_MOBILE](state) {
+        state.menuLateral = false
+    },
+
+    [mutationTypes.COMUM.SET_MENU_MOBILE_ON](state) {
+        state.menuLateralMobile = true
+    },
+
+    [mutationTypes.COMUM.SET_MENU_MOBILE_OFF](state) {
+        state.menuLateralMobile = false
     },
 
     [mutationTypes.COMUM.SET_LINK_ARQUIVO](state) {
@@ -30,10 +50,6 @@ export default {
         state.loki.product.logoutUrl = produto.LOGOUT_URL
     },
 
-    [mutationTypes.COMUM.SET_RETRAIR_MENU](state) {
-        Vue.set(state.loki, 'asideClosed', true)
-    },
-
     [mutationTypes.COMUM.SET_USUARIO_LOGADO](state, usuario) {
         const user = {
             id: usuario.userId,
@@ -53,5 +69,4 @@ export default {
     [mutationTypes.COMUM.SET_PARAMETROS](state, parametros) {
         state.parametros = parametros
     }
-
 }

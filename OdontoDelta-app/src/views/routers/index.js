@@ -1,9 +1,12 @@
 import Router from 'vue-router'
 import goTo from 'vuetify/es5/services/goto'
 import comum from './routes/comum'
+import login from './routes/login'
 import inicio from './routes/Inicio'
+import {actionTypes} from '@/core/constants'
 
-const index = new Router({
+
+let router = new Router({
     routes: [
         {
             path: '/',
@@ -13,6 +16,7 @@ const index = new Router({
             },
         },
         ...comum,
+        ...login,
         ...inicio
     ],
     scrollBehavior: (to, from, savedPosition) => {
@@ -28,4 +32,34 @@ const index = new Router({
     },
 })
 
-export default index
+router.beforeEach((to, from, next) => {
+    const usuario = actionTypes.COMUM.BUSCAR_USUARIO_LOGADO
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        if (usuario.token == null) {
+            next({ name: 'Login'})
+        } else {
+            if(to.matched.some(record => record.meta.is_admin)) {
+                if(usuario.admin){
+                    next()
+                }
+                else{
+                    next({ name: 'Inicio'})
+                }
+            }else {
+                next()
+            }
+        }
+    } else if(to.matched.some(record => record.meta.guest)) {
+        if(usuario.token == null){
+            next()
+        }
+        else{
+            next({ name: 'Inicio'})
+        }
+    }else {
+        next()
+    }
+})
+
+
+export default router

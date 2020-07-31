@@ -20,6 +20,10 @@ export default {
     usuarioLogado: {
         codigo: null,
         nome: null,
-        token: null
-    }
+        token: null,
+        admin: false
+    },
+    miniMenuLateral: true,
+    menuLateral: false,
+    menuLateralMobile: false
 }
