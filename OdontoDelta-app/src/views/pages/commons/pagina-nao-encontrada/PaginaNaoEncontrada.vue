@@ -49,7 +49,7 @@
 <style scoped lang="stylus">
     .area-404
         width 100%
-        margin 20px auto
+        margin 0   auto
         text-align center
 
         &__botao

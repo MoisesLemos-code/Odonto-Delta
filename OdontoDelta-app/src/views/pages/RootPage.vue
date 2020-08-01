@@ -1,5 +1,8 @@
 <template>
-  <core-template-default />
+  <v-app v-if="this.$route.name === 'Login'">
+    <router-view />
+  </v-app>
+  <core-template-default v-else/>
 </template>
 
 <script>

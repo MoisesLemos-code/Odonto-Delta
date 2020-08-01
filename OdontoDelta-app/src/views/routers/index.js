@@ -3,8 +3,8 @@ import goTo from 'vuetify/es5/services/goto'
 import comum from './routes/comum'
 import login from './routes/login'
 import inicio from './routes/Inicio'
-import {actionTypes} from '@/core/constants'
-
+import {mutationTypes} from '@/core/constants'
+import store from '@/core/store'
 
 let router = new Router({
     routes: [
@@ -33,7 +33,7 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-    const usuario = actionTypes.COMUM.BUSCAR_USUARIO_LOGADO
+    const usuario = router.app.$store.getters.getUsuarioLogado
     if(to.matched.some(record => record.meta.requiresAuth)) {
         if (usuario.token == null) {
             next({ name: 'Login'})
@@ -61,5 +61,8 @@ router.beforeEach((to, from, next) => {
     }
 })
 
+router.afterEach(to => {
+    store.commit(mutationTypes.COMUM.SET_CURRENT_PAGE, to)
+})
 
 export default router

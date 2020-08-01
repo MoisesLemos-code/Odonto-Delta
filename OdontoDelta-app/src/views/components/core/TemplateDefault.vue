@@ -1,6 +1,10 @@
 <template>
   <v-app class="template-default">
-      <core-navigation-drawer/>
+      <core-navigation-drawer>
+        <div class="menu">
+          <core-menu />
+        </div>
+      </core-navigation-drawer>
     <v-app-bar app height="60" class="toolbar">
       <v-icon class="mobile_menu" @click="showAside()">mdi-menu</v-icon>
       <core-title/>
@@ -18,15 +22,11 @@
 
 <script>
 import {mutationTypes} from '@/core/constants'
+import CoreMenu from "@/views/components/core/Menu";
 
 export default {
   name: 'core-template-default',
-  props: {
-    showNotification: {
-      type: Boolean,
-      default: false
-    }
-  },
+  components: {CoreMenu},
   methods: {
     showAside() {
       this.$store.commit(mutationTypes.COMUM.SET_ASIDE_HIDE, true)
@@ -45,6 +45,7 @@ export default {
   .container
     background-color #eee
     height 100%
+    overflow hidden
     padding 20px
   .toolbar
     box-shadow 0 2px 4px -1px rgba(0, 0, 0, .2)

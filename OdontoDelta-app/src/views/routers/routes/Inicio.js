@@ -4,7 +4,10 @@ export default [
         name: 'Inicio',
         component: () => import('@/views/pages/inicio/Inicio.vue'),
         meta: {
-            requiresAuth: true
+            requiresAuth: true,
+            page:{
+                title: 'Inicio'
+            }
         }
     },
 ]

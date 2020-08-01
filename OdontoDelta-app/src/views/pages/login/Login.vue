@@ -15,7 +15,6 @@
                       prepend-inner-icon="mdi-account"
                       outlined
                       dense
-                      color="#53999D"
                       :error-messages="errors.collect('usuario')"
                       v-validate="{ required: true}"
                   ></v-text-field>
@@ -26,7 +25,6 @@
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :type="showPassword ? 'text' : 'password'"
                       label="Senha"
-                      color="#53999D"
                       outlined
                       dense
                       @click:append="showPassword = !showPassword"
@@ -150,14 +148,6 @@ export default {
   padding 30px
   animation fade 400ms
   overflow hidden
-
-#btn-cadastrar
-  margin-right 10px
-  background #fc6666
-  color #fff
-  box-shadow inset 0 20px 4px rgba(252, 59, 59, 0.25)
-  border-radius 5px
-  border-style none
 
 #btn-login
   background #fc6666

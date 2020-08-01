@@ -3,42 +3,13 @@
       v-model="drawer"
       :mini-variant.sync="asideClosed"
       mobile-breakpoint="720"
+      :width="width"
       mini-variant-width="60"
       class="aside-drawer"
       app
       dark
       floating>
-    <v-list dense class='py-0'>
-      <v-list-item two-line class="avatar-container">
-        <v-list-item-avatar>
-          <v-icon size='50'>mdi-account-circle</v-icon>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>Application</v-list-item-title>
-          <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list-item
-          :key='i'
-          :to='link.to'
-          active-class='tertiary'
-          class='v-list-item'
-          v-for='(link, i) in links'
-          link
-      >
-        <v-list-item-icon>
-          <v-icon>{{ link.icon }}</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-content>
-          <v-list-item-title>{{ link.text }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+      <slot></slot>
       <div :class="{ 'arrow-opened': !asideClosed, 'arrow-closed': asideClosed }" class="no-mobile" @click="toogle()">
         <v-btn icon text>
           <v-icon color="rgba(255, 255, 255, .3)">
@@ -55,40 +26,11 @@ import {mutationTypes} from '@/core/constants'
 
 export default {
   name: 'core-navigation-drawer',
-  data: () => ({
-    links: [
-      {
-        to: '/inicio',
-        icon: 'mdi-home',
-        text: 'Início'
-      },
-      {
-        to: '/orcamento',
-        icon: 'mdi-account-cash',
-        text: 'Orçamento'
-      },
-      {
-        to: '/perfil',
-        icon: 'mdi-account',
-        text: 'Cadastros'
-      },
-      {
-        to: '/usuarios',
-        icon: 'mdi-account-settings',
-        text: 'Gerenciar Usuários'
-      },
-      {
-        to: '/produtos',
-        icon: 'mdi-food-fork-drink',
-        text: 'Gerenciar Produtos'
-      },
-      {
-        to: '/relatorios',
-        icon: 'mdi-clipboard-outline',
-        text: 'Relatórios'
-      }
-    ]
-  }),
+  props: {
+    width: {
+      default: 200
+    }
+  },
   computed: {
     asideClosed: {
       get() {

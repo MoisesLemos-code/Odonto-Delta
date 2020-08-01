@@ -2,7 +2,7 @@
         <v-toolbar-items class="toolbar-items">
             <v-menu bottom content-class="dropdown-menu" left offset-y transition="slide-y-transition">
                 <template v-slot:activator="{ on }">
-                <router-link class="toolbar-items" v-on="on" to v-ripple>
+                <router-link class="toolbar-icon" v-on="on" to v-ripple>
                     <v-badge color="error" overlap>
                         <template slot="badge">{{ notifications.length}}</template>
                         <v-icon color="tertiary">mdi-bell</v-icon>
@@ -17,9 +17,6 @@
                 </v-card>
                 </template>
             </v-menu>
-                <router-link class="toolbar-items" to="/perfil" v-ripple>
-                    <v-icon color="tertiary">mdi-account</v-icon>
-                </router-link>
         </v-toolbar-items>
 </template>
 
@@ -37,4 +34,7 @@
        display flex
        align-items center
 
+    .toolbar-icon
+      margin-left 10px
+      text-decoration none
 </style>
