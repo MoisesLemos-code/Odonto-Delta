@@ -4,28 +4,23 @@ import FileManagerUtils from '@/core/utils/FileManagerUtils'
 
 export default {
 
-    [mutationTypes.COMUM.SET_EXPANDIR_MENU](state) {
-        state.miniMenuLateral = false
+    [mutationTypes.COMUM.SET_ASIDE](state, closed) {
+        state.asideClosed = closed
     },
 
-    [mutationTypes.COMUM.SET_RETRAIR_MENU](state) {
-        state.miniMenuLateral = true
+    [mutationTypes.COMUM.SET_ASIDE_HIDE](state, hide) {
+        state.asideHide = hide
     },
 
-    [mutationTypes.COMUM.SET_EXPANDIR_MENU_MOBILE](state) {
-        state.menuLateral = true
+    [mutationTypes.COMUM.TOOGLE_ASIDE](state) {
+        state.asideClosed = !state.asideClosed
     },
 
-    [mutationTypes.COMUM.SET_RETRAIR_MENU_MOBILE](state) {
-        state.menuLateral = false
-    },
-
-    [mutationTypes.COMUM.SET_MENU_MOBILE_ON](state) {
-        state.menuLateralMobile = true
-    },
-
-    [mutationTypes.COMUM.SET_MENU_MOBILE_OFF](state) {
-        state.menuLateralMobile = false
+    [mutationTypes.COMUM.SET_CURRENT_PAGE](state, to) {
+        if (to.meta && to.meta.page) {
+            state.page.title = to.meta.page.title
+            state.page.subtitle = to.meta.page.subtitle
+        }
     },
 
     [mutationTypes.COMUM.SET_LINK_ARQUIVO](state) {

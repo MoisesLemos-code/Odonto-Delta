@@ -17,9 +17,7 @@ export default {
         commit(mutationTypes.COMUM.SET_PRODUTO, data)
     },
 
-    async [actionTypes.COMUM.BUSCAR_USUARIO_LOGADO]({ commit, state }) {
-        const produtoId = state.loki.product.id
-        const { data } = await api.usuario.buscarLogado(produtoId)
-        commit(mutationTypes.COMUM.SET_USUARIO_LOGADO, data)
+    [actionTypes.COMUM.BUSCAR_USUARIO_LOGADO]({state}) {
+        return state.usuarioLogado
     }
 }

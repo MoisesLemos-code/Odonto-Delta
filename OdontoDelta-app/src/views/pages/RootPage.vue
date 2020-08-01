@@ -1,18 +1,5 @@
 <template>
-    <v-app>
-      <div v-if="this.$route.name === 'Login'">
-        <router-view />
-      </div>
-        <div v-else class="menu">
-          <core-navigation-drawer v-show="!this.$store.state.menuLateralMobile"/>
-          <core-navigation-drawer-mobile v-show="this.$store.state.menuLateralMobile"/>
-            <div class="menu-content">
-                <core-toolbar/>
-                <core-view/>
-                <core-footer/>
-            </div>
-        </div>
-    </v-app>
+  <core-template-default />
 </template>
 
 <script>

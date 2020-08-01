@@ -3,6 +3,10 @@ export default [
         path: '/perfil',
         name: 'RedirecionarEditarUsuario',
         component: () => import('@/views/pages/commons/perfil/RedirecionaEditarUsuario'),
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
     },
     {
         path: '*',

@@ -1,5 +1,5 @@
 <template>
-    <v-footer dark class="core-footer">
+    <v-footer app inset dark>
         <v-spacer/>
         <div class="footer-items">
        <span>
@@ -22,10 +22,6 @@
 </script>
 
 <style lang="stylus" scoped>
-    .core-footer
-        z-index 0
-        border none
-
     .footer-items
         margin-right 20px
 </style>

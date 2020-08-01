@@ -12,6 +12,10 @@ export default {
         },
         parametros: {}
     },
+    page: {
+      title: '',
+      subtitle: ''
+    },
     notificacao: {
         cor: null,
         mensagem: null,
@@ -20,10 +24,10 @@ export default {
     usuarioLogado: {
         codigo: null,
         nome: null,
-        token: null,
+        token: 'aaaa',
         admin: false
     },
-    miniMenuLateral: true,
-    menuLateral: false,
+    asideClosed: false,
+    asideHide: true,
     menuLateralMobile: false
 }

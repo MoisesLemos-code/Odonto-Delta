@@ -1,17 +1,5 @@
 <template>
-    <v-card flat tile>
-    <v-toolbar dense class="core-toolbar">
-        <div class="v-toolbar-title">
-            <v-btn @click.stop="menuLateral" icon v-if="responsive">
-                <v-icon>mdi-menu</v-icon>
-            </v-btn>
-            <v-toolbar-title class="toolbar-title-text">{{ title }}</v-toolbar-title>
-        </div>
-        <v-spacer/>
         <v-toolbar-items class="toolbar-items">
-                <router-link class="toolbar-items" to="/inicio" v-ripple>
-                    <v-icon color="tertiary">mdi-home</v-icon>
-                </router-link>
             <v-menu bottom content-class="dropdown-menu" left offset-y transition="slide-y-transition">
                 <template v-slot:activator="{ on }">
                 <router-link class="toolbar-items" v-on="on" to v-ripple>
@@ -33,65 +21,20 @@
                     <v-icon color="tertiary">mdi-account</v-icon>
                 </router-link>
         </v-toolbar-items>
-    </v-toolbar>
-    </v-card>
 </template>
 
 <script>
-    import {mutationTypes} from '@/core/constants'
     export default {
         name: 'core-toolbar',
         data: () => ({
             notifications: [],
-            title: null,
-            responsive: false
-        }),
-        watch: {
-            $route(val) {
-                this.title = val.name
-            }
-        },
-        mounted() {
-            this.onResponsiveInverted()
-            window.addEventListener('resize', this.onResponsiveInverted)
-        },
-        beforeDestroy() {
-            window.removeEventListener('resize', this.onResponsiveInverted)
-        },
-        methods: {
-            onResponsiveInverted() {
-                if (window.innerWidth < 1150) {
-                    this.responsive = true
-                    this.$store.commit(mutationTypes.COMUM.SET_MENU_MOBILE_ON)
-                } else {
-                    this.responsive = false
-                    this.$store.commit(mutationTypes.COMUM.SET_MENU_MOBILE_OFF)
-                }
-            },
-            menuLateral(){
-                if (this.$store.state.menuLateral) {
-                    this.$store.commit(mutationTypes.COMUM.SET_RETRAIR_MENU_MOBILE)
-                } else {
-                    this.$store.commit(mutationTypes.COMUM.SET_EXPANDIR_MENU_MOBILE)
-                }
-            }
-        }
+        })
     }
 </script>
 
 <style lang="stylus" scoped>
-    .core-toolbar a
-        text-decoration none
-
-    .core-toolbar
-        -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
-        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important
-        background-color: #fff !important
-
-    .toolbar-title-text
-        color '#7777'
-
-    .v-toolbar-title, .toolbar-items
+    .toolbar-items
        display flex
        align-items center
+
 </style>
