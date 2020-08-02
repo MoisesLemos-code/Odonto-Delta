@@ -8,6 +8,7 @@ export default {
         SHOW_ALERT: 'showAlert'
     },
     COMUM: {
+        EFETUAR_LOGOUT: 'efetuarLogout',
         SET_MENU_AVATAR: 'setMenuAvatar',
         SET_PRODUTO: 'setProduto',
         SET_USUARIO_LOGADO: 'setUsuarioLogado',

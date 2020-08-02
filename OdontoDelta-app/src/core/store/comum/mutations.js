@@ -23,6 +23,16 @@ export default {
         }
     },
 
+    [mutationTypes.COMUM.EFETUAR_LOGOUT](state){
+        state.usuarioLogado = {
+            codigo: null,
+            nomeCompleto: null,
+            nome: null,
+            token: null,
+            admin: false
+        }
+    },
+
     [mutationTypes.COMUM.SET_LINK_ARQUIVO](state) {
         Vue.set(state.loki.file, 'api', '/patrimonio-intangivel/api/v1/arquivos')
     },
