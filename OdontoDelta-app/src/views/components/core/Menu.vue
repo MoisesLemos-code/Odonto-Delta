@@ -1,14 +1,14 @@
 <template>
   <div class="aside-menu">
       <v-list subheader>
-        <v-list-item two-line class="avatar-container">
+        <v-list-item two-line>
           <v-list-item-avatar>
             <v-icon size='50'>mdi-account-circle</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>{{this.$store.state.usuarioLogado.nomeCompleto}}</v-list-item-title>
-            <v-list-item-subtitle>{{this.$store.state.usuarioLogado.perfil}}</v-list-item-subtitle>
+            <v-list-item-title>{{this.$store.state.comum.usuarioLogado.nomeCompleto}}</v-list-item-title>
+            <v-list-item-subtitle>{{this.$store.state.comum.usuarioLogado.perfil}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
@@ -101,13 +101,13 @@ export default {
   name: 'core-menu',
   computed: {
     menuActions() {
-      return this.$store.state.menuActions
+      return this.$store.state.menu.menuActions
     },
     asideClosed() {
-      return this.$store.state.asideClosed
+      return this.$store.state.menu.asideClosed
     },
     avatarActions() {
-      return this.$store.state.avatarActions
+      return this.$store.state.menu.avatarActions
     }
   },
   mounted() {
@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     open() {
-      this.$store.commit(mutationTypes.COMUM.SET_ASIDE, false)
+      this.$store.commit(mutationTypes.DRAWER.SET_ASIDE, false)
     },
     expand(currentActiveMenu) {
       currentActiveMenu.expanded = true

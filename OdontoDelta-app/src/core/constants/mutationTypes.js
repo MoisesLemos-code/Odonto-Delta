@@ -12,15 +12,25 @@ export default {
         SET_MENU_AVATAR: 'setMenuAvatar',
         SET_PRODUTO: 'setProduto',
         SET_USUARIO_LOGADO: 'setUsuarioLogado',
-        SET_ASIDE: 'setAside',
-        SET_ASIDE_HIDE: 'setAsideHide',
-        TOOGLE_ASIDE: 'toogleAside',
         SET_CURRENT_PAGE: 'setCurrentPage',
         SET_ROTA_ORIGEM: 'setRotaOrigem',
         SET_HABILITAR_SALVAMENTO_AUTOMATICO: 'setHabilitarSalvamentoAutomatico',
         SET_DESABILITAR_SALVAMENTO_AUTOMATICO: 'setDesabilitarSalvamentoAutomatico',
         SET_LINK_ARQUIVO: 'setLinkArquivo',
         SET_PARAMETROS: 'setParametros'
+    },
+    DRAWER:{
+        SET_ASIDE: 'setAside',
+        SET_ASIDE_HIDE: 'setAsideHide',
+        TOOGLE_ASIDE: 'toogleAside',
+    },
+    USUARIO:{
+        SET_AUTOCOMPLETE_NOMES_DOS_USUARIOS: 'setAutocompleteNomesDosUsuarios',
+        SET_DADOS_GERAIS: 'setDadosGerais',
+        SET_FILTROS_BUSCA_TODOS_USUARIOS: 'setFiltrosBuscaTodosUsuarios',
+        SET_PAGINACAO_BUSCA_TODOS_USUARIOS: 'setPaginacaoBuscaTodosUsuarios',
+        SET_RESUMO_DO_USUARIO: 'setResumoDoUsuario',
+        RESETA_PAGE: 'resetaPage',
     },
     NOTIFICACAO: {
         SET_NOTIFICACAO: 'setNotificacao',

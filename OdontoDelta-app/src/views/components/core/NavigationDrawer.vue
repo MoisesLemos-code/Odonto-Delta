@@ -34,32 +34,30 @@ export default {
   computed: {
     asideClosed: {
       get() {
-        return this.$store.state.asideClosed
+        return this.$store.state.menu.asideClosed
       },
       set() {}
     },
     drawer: {
       get() {
-        return this.$store.state.asideHide
+        return this.$store.state.menu.asideHide
       },
       set(hide) {
-        this.$store.commit(mutationTypes.COMUM.SET_ASIDE_HIDE, hide)
+        this.$store.commit(mutationTypes.DRAWER.SET_ASIDE_HIDE, hide)
       }
     }
   },
   methods: {
     toogle() {
-      this.$store.commit(mutationTypes.COMUM.TOOGLE_ASIDE)
+      this.$store.commit(mutationTypes.DRAWER.TOOGLE_ASIDE)
     },
     change(closed) {
-      this.$store.commit(mutationTypes.COMUM.SET_ASIDE, closed)
+      this.$store.commit(mutationTypes.DRAWER.SET_ASIDE, closed)
     }
   },
 }
 </script>
 <style lang='stylus' scoped>
-.avatar-container
-  padding-left 7px
 
 .aside-drawer::-webkit-scrollbar
   width 6px

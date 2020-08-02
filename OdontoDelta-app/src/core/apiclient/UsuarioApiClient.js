@@ -1,28 +1,31 @@
 import axios from 'axios'
+import ParamUtils from '../utils/ParamUtils'
+
 
 class UsuarioApiClient {
 
-    async atualiazarSessaoDominio(produtoId, dominioTipoCliente) {
-        return await axios.put(`/hal/usuario/sessao/atualizarSessaoMultiplosDominios?produtoId=${produtoId}&dominioTipoCliente=${dominioTipoCliente}`)
+    async efetuarLogin(dados) {
+        return await axios.post('/login', dados)
     }
 
-    async buscarLogado(produtoId) {
-        //await axios.get(`/hal/usuario/sessao?produtoId=${produtoId}`)
-        const obj = {
-            data: {
-                companyId: produtoId,
-                domainType: 'DEFAULT',
-                lang: 'pt-BR',
-                name: 'Administrador do sistema',
-                userId: 1,
-                userName: 'admin'
-            }
-        }
-        return obj
+    async buscarTodos(paginacao, filtros) {
+        return await axios.get(`/usuario/page?${ParamUtils.ObjectsToParams([paginacao, filtros])}`)
     }
 
-    async editar(payload) {
-        return await axios.post('/hal/editarUsuario', payload)
+    async buscarId(id){
+        return await axios.get(`/usuario/find/${id}`)
+    }
+
+    async salvar(dados){
+        return await axios.post('/usuario/insert', dados)
+    }
+
+    async editar(dados) {
+        return await axios.post(`/usuario/update/${dados.id}`, dados)
+    }
+
+    async remover(id){
+        return await axios.get(`/usuario/delete/${id}`)
     }
 }
 
