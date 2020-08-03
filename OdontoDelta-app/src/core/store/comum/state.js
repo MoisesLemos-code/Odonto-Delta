@@ -21,6 +21,6 @@ export default {
             cor: null,
             mensagem: null,
             mostrar: false
-        },
+        }
     }
 }

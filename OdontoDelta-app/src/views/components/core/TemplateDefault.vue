@@ -22,14 +22,12 @@
 
 <script>
 import {mutationTypes} from '@/core/constants'
-import CoreMenu from "@/views/components/core/Menu";
 
 export default {
   name: 'core-template-default',
-  components: {CoreMenu},
   methods: {
     showAside() {
-      this.$store.commit(mutationTypes.COMUM.SET_ASIDE_HIDE, true)
+      this.$store.commit(mutationTypes.DRAWER.SET_ASIDE_HIDE, true)
     }
   }
 }

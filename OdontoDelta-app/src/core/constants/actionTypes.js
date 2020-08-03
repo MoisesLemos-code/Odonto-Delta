@@ -2,8 +2,7 @@ export default {
     COMUM: {
         BUSCAR_LINK_EDITAR_USUARIO: 'buscarLinkEditarUsuario',
         BUSCAR_PRODUTO_POR_NOME: 'buscarProdutoPorNome',
-        EFETUAR_LOGIN: 'efetuarLogin',
-        BUSCAR_USUARIO_LOGADO: 'buscarUsuarioLogado'
+        EFETUAR_LOGIN: 'efetuarLogin'
     },
     USUARIO: {
         BUSCAR_TODOS_USUARIOS: 'buscarTodosUsuarios',

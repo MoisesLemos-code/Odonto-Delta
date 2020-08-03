@@ -10,10 +10,10 @@ export default {
   name: 'core-title',
   computed: {
     title() {
-      return this.$store.state.page.title
+      return this.$store.state.comum.page.title
     },
     subtitle() {
-      return this.$store.state.page.subtitle
+      return this.$store.state.comum.page.subtitle
     }
   }
 }

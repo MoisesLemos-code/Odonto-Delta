@@ -3,6 +3,11 @@ import { actionTypes, mutationTypes, produto } from '@/core/constants'
 
 export default {
 
+    async [actionTypes.COMUM.EFETUAR_LOGIN]({commit}, dados) {
+        const response = await api.usuario.efetuarLogin(dados)
+        return response
+    },
+
     async [actionTypes.COMUM.BUSCAR_LINK_EDITAR_USUARIO]({ state }) {
         const payload = {
             uri: window.location.origin + window.location.pathname,
@@ -16,8 +21,4 @@ export default {
         const { data } = await api.produto.buscarPorNome(produto.NOME)
         commit(mutationTypes.COMUM.SET_PRODUTO, data)
     },
-
-    [actionTypes.COMUM.BUSCAR_USUARIO_LOGADO]({state}) {
-        return state.usuarioLogado
-    }
 }

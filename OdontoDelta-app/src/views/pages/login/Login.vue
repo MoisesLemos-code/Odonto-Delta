@@ -56,11 +56,6 @@ export default {
     return {
       loadingBtn: false,
       showPassword: false,
-      notificacao: {
-        cor: '',
-        mensagem: '',
-        mostrar: true
-      },
       usuario: {
         nome: '',
         senha: ''
@@ -76,23 +71,6 @@ export default {
   },
   methods: {
     ...mapMutations([mutationTypes.COMUM.SET_USUARIO_LOGADO]),
-    ...mapMutations([mutationTypes.NOTIFICACAO.SET_NOTIFICACAO]),
-    abrirNotificacaoSucesso() {
-      this.notificacao = {
-        cor: 'success',
-        mensagem: 'Operação realizada com sucesso !',
-        mostrar: true
-      }
-      this.setNotificacao(this.notificacao)
-    },
-    abrirNotificacaoErro(data) {
-      this.notificacao = {
-        cor: 'error',
-        mensagem: data.message,
-        mostrar: true
-      }
-      this.setNotificacao(this.notificacao)
-    },
     async efetuarLogin() {
       if (await this.validarDadosFormulario()) {
         try {
@@ -108,12 +86,12 @@ export default {
               token: headers.authorization
             }
             this.setUsuarioLogado(this.usuarioAutenticado)
+            this.mostrarNotificacaoSucessoDefault()
             await  this.$router.push({name: 'Inicio'})
-            this.abrirNotificacaoSucesso()
           }
         } catch (err) {
           this.loadingBtn = false
-          this.abrirNotificacaoErro(err.response.data)
+          console.log(err.response.data)
         }
       }
     },

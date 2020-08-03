@@ -1,3 +1,3 @@
 export default {
-    getUsuarioLogado: state => state.usuarioLogado
+    getUsuarioLogado: state => state.comum.usuarioLogado
 }

@@ -17,7 +17,8 @@ export default {
         SET_HABILITAR_SALVAMENTO_AUTOMATICO: 'setHabilitarSalvamentoAutomatico',
         SET_DESABILITAR_SALVAMENTO_AUTOMATICO: 'setDesabilitarSalvamentoAutomatico',
         SET_LINK_ARQUIVO: 'setLinkArquivo',
-        SET_PARAMETROS: 'setParametros'
+        SET_PARAMETROS: 'setParametros',
+        SET_NOTIFICACAO: 'setNotificacao'
     },
     DRAWER:{
         SET_ASIDE: 'setAside',
@@ -31,9 +32,6 @@ export default {
         SET_PAGINACAO_BUSCA_TODOS_USUARIOS: 'setPaginacaoBuscaTodosUsuarios',
         SET_RESUMO_DO_USUARIO: 'setResumoDoUsuario',
         RESETA_PAGE: 'resetaPage',
-    },
-    NOTIFICACAO: {
-        SET_NOTIFICACAO: 'setNotificacao',
     },
     CONVENIO: {
         SET_AUTOCOMPLETE_NOMES_DOS_CONVENIOS: 'setAutocompleteNomesDosConvenios',
