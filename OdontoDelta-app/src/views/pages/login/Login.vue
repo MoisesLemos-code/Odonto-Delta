@@ -102,7 +102,7 @@ export default {
 }
 </script>
 
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
 .background-container
   background: url(../../../images/bg-02.jpg) no-repeat center
   background-size cover

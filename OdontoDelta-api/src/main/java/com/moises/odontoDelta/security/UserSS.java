@@ -15,16 +15,20 @@ public class UserSS implements UserDetails {
 	
 	private Integer codigo;
 	private String nome;
+	private String nomeCompleto;
 	private String senha;
+	private boolean isAdmin;
 	Collection<? extends GrantedAuthority> authorities;
 	
 	public UserSS() {}
 	
-	public UserSS(Integer codigo, String nome, String senha, Set<Permissao_usuario> tipo) {
+	public UserSS(Integer codigo, String nome, String nomeCompleto, String senha, Set<Permissao_usuario> tipo) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
+		this.nomeCompleto = nomeCompleto;
 		this.senha = senha;
+		this.isAdmin = tipo.contains(Permissao_usuario.ADMINISTRADOR);
 		this.authorities = tipo.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
 	}
 
@@ -46,6 +50,10 @@ public class UserSS implements UserDetails {
 	public String getUsername() {
 		return nome;
 	}
+
+	public String getNomeCompleto() { return nomeCompleto;}
+
+	public boolean isAdmin() { return isAdmin;}
 
 	@Override
 	public boolean isAccountNonExpired() {

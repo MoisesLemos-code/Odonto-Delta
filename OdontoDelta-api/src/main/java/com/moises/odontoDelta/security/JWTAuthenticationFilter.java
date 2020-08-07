@@ -3,12 +3,14 @@ package com.moises.odontoDelta.security;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.moises.odontoDelta.domain.enums.Permissao_usuario;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -54,10 +56,18 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
-	
-		String username = ((UserSS) auth.getPrincipal()).getUsername();
-        String token = jwtUtil.generateToken(username);
+
+        Integer codigo = ((UserSS) auth.getPrincipal()).getCodigo();
+		String nome = ((UserSS) auth.getPrincipal()).getUsername();
+		String nomeCompleto = ((UserSS) auth.getPrincipal()).getNomeCompleto();
+        String token = jwtUtil.generateToken(nome);
+        String perfil = ((UserSS) auth.getPrincipal()).isAdmin() + "";
+
         res.addHeader("Authorization", "Bearer " + token);
+        res.addHeader("User_codigo", codigo.toString());
+        res.addHeader("User_nome", nome);
+        res.addHeader("User_nomeCompleto", nomeCompleto);
+        res.addHeader("User_perfil", perfil);
 	}
 	
 	private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler {
@@ -74,8 +84,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             long date = new Date().getTime();
             return "{\"timestamp\": " + date + ", "
                 + "\"status\": 400, "
-                + "\"error\": \"Não autorizado\", "
-                + "\"message\": \"Nome ou senha inválidos!\", "
+                + "\"error\": \"Nao autorizado\", "
+                + "\"message\": \"Nome ou senha invalidos!\", "
                 + "\"path\": \"/login\"}";
         }
     }
