@@ -6,32 +6,32 @@
         <v-row class="v-row" align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-img :src="require('@/images/logo-01.png')" aspect-ratio="2.5" id="logo"/>
-            <v-card class="elevation-12" >
+            <v-card class="elevation-12">
               <v-card-text>
-                  <v-text-field
-                      v-model="usuario.nome"
-                      name="usuario"
-                      label="Usuário"
-                      prepend-inner-icon="mdi-account"
-                      outlined
-                      dense
-                      :error-messages="errors.collect('usuario')"
-                      v-validate="{ required: true}"
-                  ></v-text-field>
-                  <v-text-field
-                      v-model="usuario.senha"
-                      name="senha"
-                      prepend-inner-icon="mdi-lock"
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="showPassword ? 'text' : 'password'"
-                      label="Senha"
-                      outlined
-                      dense
-                      @click:append="showPassword = !showPassword"
-                      :error-messages="errors.collect('senha')"
-                      v-validate="{ required: true}"
-                  ></v-text-field>
-                  <v-btn id="btn-login" block outlined @click="efetuarLogin" :loading="loadingBtn">Entrar</v-btn>
+                <v-text-field
+                    v-model="usuario.nome"
+                    name="usuario"
+                    label="Usuário"
+                    prepend-inner-icon="mdi-account"
+                    outlined
+                    dense
+                    :error-messages="errors.collect('usuario')"
+                    v-validate="{ required: true}"
+                ></v-text-field>
+                <v-text-field
+                    v-model="usuario.senha"
+                    name="senha"
+                    prepend-inner-icon="mdi-lock"
+                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="showPassword ? 'text' : 'password'"
+                    label="Senha"
+                    outlined
+                    dense
+                    @click:append="showPassword = !showPassword"
+                    :error-messages="errors.collect('senha')"
+                    v-validate="{ required: true}"
+                ></v-text-field>
+                <v-btn id="btn-login" block outlined @click="efetuarLogin" :loading="loadingBtn">Entrar</v-btn>
               </v-card-text>
             </v-card>
           </v-col>
@@ -42,64 +42,62 @@
 </template>
 
 <script>
-import notificacao from '@/views/components/Notificacao'
-import {mapMutations, mapState} from 'vuex'
-import {actionTypes, mutationTypes} from '@/core/constants'
+    import notificacao from '@/views/components/Notificacao'
+    import {mapMutations} from 'vuex'
+    import {actionTypes, mutationTypes} from '@/core/constants'
 
-export default {
-  name: 'Login',
-  components: {notificacao},
-  $_veeValidate: {
-    validator: 'new'
-  },
-  data() {
-    return {
-      loadingBtn: false,
-      showPassword: false,
-      usuario: {
-        nome: '',
-        senha: ''
-      },
-      usuarioAutenticado: {
-        nome: '',
-        token: ''
-      }
-    }
-  },
-  computed: {
-    ...mapState(['usuarioLogado'])
-  },
-  methods: {
-    ...mapMutations([mutationTypes.COMUM.SET_USUARIO_LOGADO]),
-    async efetuarLogin() {
-      if (await this.validarDadosFormulario()) {
-        try {
-          this.loadingBtn = true
-          const {headers} = await this.$store.dispatch(
-              actionTypes.COMUM.EFETUAR_LOGIN,
-              this.usuario
-          )
-          if (headers.authorization) {
-            this.usuarioAutenticado = {
-              codigo: 1,
-              nome: this.usuario.nome,
-              token: headers.authorization
+    export default {
+        name: 'Login',
+        components: {notificacao},
+        $_veeValidate: {
+            validator: 'new'
+        },
+        data() {
+            return {
+                loadingBtn: false,
+                showPassword: false,
+                usuario: {
+                    nome: '',
+                    senha: ''
+                },
+                usuarioAutenticado: {
+                    nome: '',
+                    token: ''
+                }
             }
-            this.setUsuarioLogado(this.usuarioAutenticado)
-            this.mostrarNotificacaoSucessoDefault()
-            await  this.$router.push({name: 'Inicio'})
-          }
-        } catch (err) {
-          this.loadingBtn = false
-          console.log(err.response.data)
+        },
+        methods: {
+            ...mapMutations([mutationTypes.COMUM.SET_USUARIO_LOGADO]),
+            async efetuarLogin() {
+                if (await this.validarDadosFormulario()) {
+                    try {
+                        this.loadingBtn = true
+                        const {headers} = await this.$store.dispatch(
+                            actionTypes.COMUM.EFETUAR_LOGIN,
+                            this.usuario
+                        )
+                        console.log(headers)
+                        if (headers.authorization) {
+                            this.usuarioAutenticado = {
+                                codigo: 1,
+                                nome: this.usuario.nome,
+                                token: headers.authorization
+                            }
+                            //this.setUsuarioLogado(this.usuarioAutenticado)
+                            this.mostrarNotificacaoSucessoDefault()
+                            await this.$router.push({name: 'Inicio'})
+                        }
+                    } catch (err) {
+                        this.loadingBtn = false
+                        console.log(err.response.data)
+                    }
+                }
+            },
+            async validarDadosFormulario() {
+                return this.$validator._base.validateAll()
+            }
         }
-      }
-    },
-    async validarDadosFormulario() {
-      return this.$validator._base.validateAll()
     }
-  }
-}
 </script>
 
 <style lang="stylus" scoped>

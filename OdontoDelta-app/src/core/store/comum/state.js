@@ -11,16 +11,17 @@ export default {
         },
         usuarioLogado: {
             codigo: null,
-            nomeCompleto: 'Administrador',
-            nome: 'admin',
-            perfil: 'admin',
-            token: 'aaaa',
+            nomeCompleto: null,
+            nome: null,
+            perfil: null,
+            token: null,
             admin: false
         },
         notificacao: {
             cor: null,
             mensagem: null,
             mostrar: false
-        }
+        },
+        alert: {},
     }
 }
