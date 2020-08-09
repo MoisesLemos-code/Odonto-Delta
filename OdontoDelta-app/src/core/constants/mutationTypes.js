@@ -1,12 +1,4 @@
 export default {
-    LOKI: {
-        DISABLE_GLOBAL_LOADING: 'disableGlobalLoading',
-        ENABLE_GLOBAL_LOADING: 'enableGlobalLoading',
-        SET_GLOBAL_LOADING: 'setGlobalLoading',
-        SET_LOADING_MESSAGE: 'setLoadingMessage',
-        SET_NOTIFICATION: 'setNotification',
-        SHOW_ALERT: 'showAlert'
-    },
     COMUM: {
         EFETUAR_LOGOUT: 'efetuarLogout',
         SET_MENU_AVATAR: 'setMenuAvatar',
@@ -18,7 +10,12 @@ export default {
         SET_DESABILITAR_SALVAMENTO_AUTOMATICO: 'setDesabilitarSalvamentoAutomatico',
         SET_LINK_ARQUIVO: 'setLinkArquivo',
         SET_PARAMETROS: 'setParametros',
-        SET_NOTIFICACAO: 'setNotificacao'
+        SET_NOTIFICACAO: 'setNotificacao',
+        DISABLE_GLOBAL_LOADING: 'disableGlobalLoading',
+        ENABLE_GLOBAL_LOADING: 'enableGlobalLoading',
+        SET_GLOBAL_LOADING: 'setGlobalLoading',
+        SET_LOADING_MESSAGE: 'setLoadingMessage',
+        SET_NOTIFICATION: 'setNotification'
     },
     DRAWER:{
         SET_ASIDE: 'setAside',

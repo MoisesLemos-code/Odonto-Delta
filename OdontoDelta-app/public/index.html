@@ -19,72 +19,78 @@
     <meta property="og:description" content="Odonto Delta 2020">
     <meta name="keywords" content="odonto, delta">
     <meta name="author" content="Moisés Lemos">
-    <style lang="stylus">
-        .loadingg-page
-            width 100%
-            display block
-            align-items center
-            position absolute
-            left 40%
-            align-content center
+    <style lang="less">
+      .loadingg-page {
+        width: 100%;
+        display: block;
+        align-items: center;
+        position: absolute;
+        left: 40%;
+        align-content: center;
+      }
 
-        .loading-title
-            width 20%
-            height 100%
-            font-size 20px
-            text-align center
-            margin-top 100px
-            font-weight bold
-            color #555
+      .loading-title {
+        width: 20%;
+        height: 100%;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 100px;
+        font-weight: bold;
+        color: #555;
+      }
 
-        .loader
-            height 4px
-            width 20%
-            position relative
-            overflow hidden
-            background-color #ddd
+      .loader {
+        height: 4px;
+        width: 20%;
+        position: relative;
+        overflow: hidden;
+        background-color: #ddd;
+      }
 
-        .loader:before
-            display block
-            position absolute
-            content ""
-            left -200px
-            width 200px
-            height 4px
-            background-color #153c5c
-            animation loading 2s linear infinite
+      .loader:before {
+        display: block;
+        position: absolute;
+        content: "";
+        left: -200px;
+        width: 200px;
+        height: 4px;
+        background-color: #153c5c;
+        animation: loading 2s linear infinite;
+      }
 
-        @keyframes loading
-            from
-                left -200px
-                width 30%
-
-            50%
-                width 30%
-
-            70%
-                width 70%
-
-            80%
-                left 50%
-
-            95%
-                left 120%
-
-            to
-                left 100%
+      @keyframes loading {
+        from {
+          left: -200px;
+          width: 30%;
+        }
+        50% {
+          width: 30%;
+        }
+        70% {
+          width: 70%;
+        }
+        80% {
+          left: 50%;
+        }
+        95% {
+          left: 120%;
+        }
+        to {
+          left: 100%;
+        }
+      }
     </style>
 </head>
 
 <body>
-    <noscript>
-        <strong>Desculpe, mas esta aplicação não funciona se o Javascript estiver desabilidado. Para continuar habilite
-            o Javascript.</strong>
-    </noscript>
-    <div id="app" class="loadingg-page">
-        <h1 class="loading-title">Carregando...</h1>
-        <div class="loader"></div>
-    </div>
+<noscript>
+    <strong>Desculpe, mas esta aplicação não funciona se o Javascript estiver desabilidado. Para continuar habilite
+        o Javascript.</strong>
+</noscript>
+<div id="app" class="loadingg-page">
+    <h1 class="loading-title">Carregando...</h1>
+    <div class="loader"></div>
+</div>
 </body>
 
 </html>

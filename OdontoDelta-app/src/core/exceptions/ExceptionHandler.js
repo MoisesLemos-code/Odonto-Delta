@@ -14,9 +14,8 @@ class ExceptionHandler {
         } else {
             this.tratarError(error)
         }
-        store.commit(mutationTypes.LOKI.DISABLE_AUTO_SAVING)
-        store.commit(mutationTypes.LOKI.SET_GLOBAL_LOADING, false)
-        store.commit(mutationTypes.LOKI.SET_LOADING_MESSAGE, store.state.defaultLoadingMessage)
+        store.commit(mutationTypes.COMUM.SET_GLOBAL_LOADING, false)
+        store.commit(mutationTypes.COMUM.SET_LOADING_MESSAGE, store.state.defaultLoadingMessage)
     }
 
     tratarValidationError(error) {

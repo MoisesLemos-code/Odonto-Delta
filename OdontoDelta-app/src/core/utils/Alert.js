@@ -6,18 +6,25 @@ export default class Alert {
         this.store = store
     }
 
-    showError(key) {
-        if (!key) {
-            key = 'Não foi possível realizar a operação!'
+    showError(mensagem) {
+        if (!mensagem) {
+            mensagem = 'Não foi possível realizar a operação!'
         }
-        this.store.commit(mutationTypes.LOKI.SHOW_ALERT, { message: key, type: 'error' })
+        this.store.commit(mutationTypes.COMUM.SET_NOTIFICACAO, {
+            mensagem,
+            cor: 'error',
+            mostrar: true
+        })
     }
 
-    showInfo(key) {
-        if (!key) {
-            key = 'Operação realizada com sucesso!'
+    showInfo(mensagem) {
+        if (!mensagem) {
+            mensagem = 'Operação realizada com sucesso!'
         }
-        this.store.commit(mutationTypes.LOKI.SHOW_ALERT, { message: key, type: 'success' })
+        this.store.commit(mutationTypes.COMUM.SET_NOTIFICACAO, {
+            mensagem,
+            cor: 'success',
+            mostrar: true
+        })
     }
-
 }

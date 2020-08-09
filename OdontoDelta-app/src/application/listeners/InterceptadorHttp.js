@@ -15,6 +15,7 @@ class InterceptadorHttp {
     }
 
     registrarInterceptadores() {
+        axios.defaults.baseURL = 'http://localhost:5050/'
         axios.interceptors.request.use(this.tratarRequest, this.tratarErros)
         axios.interceptors.response.use(this.tratarResponse, this.tratarErros)
     }

@@ -1,5 +1,6 @@
 <template>
   <v-app class="template-default">
+     <loading />
       <core-navigation-drawer>
         <div class="menu">
           <core-menu />
@@ -21,16 +22,18 @@
 </template>
 
 <script>
-import {mutationTypes} from '@/core/constants'
+    import {mutationTypes} from '@/core/constants'
+    import Loading from '@/views/components/Loading'
 
-export default {
-  name: 'core-template-default',
-  methods: {
-    showAside() {
-      this.$store.commit(mutationTypes.DRAWER.SET_ASIDE_HIDE, true)
+    export default {
+        name: 'core-template-default',
+        components: {Loading},
+        methods: {
+            showAside() {
+                this.$store.commit(mutationTypes.DRAWER.SET_ASIDE_HIDE, true)
+            }
+        }
     }
-  }
-}
 </script>
 
 

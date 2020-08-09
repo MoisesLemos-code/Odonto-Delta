@@ -7,6 +7,7 @@
           <v-col cols="12" sm="8" md="4">
             <v-img :src="require('@/images/logo-01.png')" aspect-ratio="2.5" id="logo"/>
             <v-card class="elevation-12">
+              <v-form @submit.prevent="efetuarLogin">
               <v-card-text>
                 <v-text-field
                     v-model="usuario.nome"
@@ -31,8 +32,9 @@
                     :error-messages="errors.collect('senha')"
                     v-validate="{ required: true}"
                 ></v-text-field>
-                <v-btn id="btn-login" block outlined @click="efetuarLogin" :loading="loadingBtn">Entrar</v-btn>
+                <v-btn id="btn-login" block outlined type="submit" :loading="loadingBtn">Entrar</v-btn>
               </v-card-text>
+              </v-form>
             </v-card>
           </v-col>
         </v-row>
@@ -72,24 +74,24 @@
                 if (await this.validarDadosFormulario()) {
                     try {
                         this.loadingBtn = true
-                        const {headers} = await this.$store.dispatch(
+                        const { data } = await this.$store.dispatch(
                             actionTypes.COMUM.EFETUAR_LOGIN,
                             this.usuario
                         )
-                        console.log(headers)
-                        if (headers.authorization) {
+                        if (data) {
                             this.usuarioAutenticado = {
-                                codigo: 1,
-                                nome: this.usuario.nome,
-                                token: headers.authorization
+                                codigo: data.userCodigo,
+                                nome: data.userNome,
+                                nomeCompleto: data.userNomeCompleto,
+                                token: data.token,
+                                admin: data.isAdmin
                             }
-                            //this.setUsuarioLogado(this.usuarioAutenticado)
-                            this.mostrarNotificacaoSucessoDefault()
+                            this.setUsuarioLogado(this.usuarioAutenticado)
                             await this.$router.push({name: 'Inicio'})
                         }
                     } catch (err) {
                         this.loadingBtn = false
-                        console.log(err.response.data)
+                        this.mostrarNotificacaoErro(err.response.data.message)
                     }
                 }
             },
@@ -102,7 +104,7 @@
 
 <style lang="stylus" scoped>
 .background-container
-  background: url(../../../images/bg-02.jpg) no-repeat center
+  background: url(../../../images/bg-01.jpg) no-repeat center
   background-size cover
   -webkit-background-size cover
   -moz-background-size cover

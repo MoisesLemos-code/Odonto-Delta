@@ -1,13 +1,16 @@
 <template>
   <v-app v-if="this.$route.name === 'Login'">
+    <loading />
     <router-view />
   </v-app>
   <core-template-default v-else/>
 </template>
 
 <script>
+    import Loading from '@/views/components/Loading'
     export default {
-        name: 'RootPage'
+        name: 'RootPage',
+        components: {Loading}
     }
 </script>
 

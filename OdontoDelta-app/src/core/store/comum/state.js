@@ -17,11 +17,14 @@ export default {
             token: null,
             admin: false
         },
-        notificacao: {
-            cor: null,
-            mensagem: null,
-            mostrar: false
-        },
-        alert: {},
-    }
+        isGlobalLoadingEnabled: true,
+        isLoading: false,
+        loadingMessage: 'Por favor, aguarde...',
+    },
+    notificacao: {
+        cor: 'error',
+        titulo: '',
+        mensagem: '',
+        mostrar: false
+    },
 }

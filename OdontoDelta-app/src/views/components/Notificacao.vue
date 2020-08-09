@@ -5,8 +5,7 @@
                 :right="right"
                 :top="top"
                 dark
-                v-model="notificacao.mostrar"
-        >
+                v-model="notificacao.mostrar">
             <v-icon class="mr-3" color="white">mdi-bell-plus</v-icon>
             <div class="body">
                 <h4 class="title">{{notificacao.titulo}}</h4>

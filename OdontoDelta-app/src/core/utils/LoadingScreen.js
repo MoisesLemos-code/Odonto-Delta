@@ -6,16 +6,16 @@ export default class LoadingScreen {
     }
 
     start() {
-        this.store.commit(mutationTypes.LOKI.SET_GLOBAL_LOADING, true)
+        this.store.commit(mutationTypes.COMUM.SET_GLOBAL_LOADING, true)
     }
 
     stop() {
-        this.store.commit(mutationTypes.LOKI.SET_GLOBAL_LOADING, false)
+        this.store.commit(mutationTypes.COMUM.SET_GLOBAL_LOADING, false)
         this.reset()
     }
 
     reset() {
-        this.store.commit(mutationTypes.LOKI.SET_LOADING_MESSAGE, this.store.state.defaultLoadingMessage)
+        this.store.commit(mutationTypes.COMUM.SET_LOADING_MESSAGE, this.store.state.defaultLoadingMessage)
     }
 
 }

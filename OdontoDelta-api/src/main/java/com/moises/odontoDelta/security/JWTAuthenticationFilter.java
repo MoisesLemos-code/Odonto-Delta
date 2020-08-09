@@ -1,6 +1,7 @@
 package com.moises.odontoDelta.security;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.moises.odontoDelta.domain.enums.Permissao_usuario;
+import com.moises.odontoDelta.helper.JsonHelper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +28,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private AuthenticationManager authenticationManager;
     
     private JWTUtil jwtUtil;
+
+    private class ResponseBody{
+        private Integer userCodigo;
+        private String userNome;
+        private String userNomeCompleto;
+        private String token;
+        private boolean isAdmin;
+
+        public ResponseBody(Integer userCodigo, String userNome, String userNomeCompleto,
+                            String token, boolean isAdmin){
+            this.userCodigo = userCodigo;
+            this.userNome = userNome;
+            this.userNomeCompleto = userNomeCompleto;
+            this.token = token;
+            this.isAdmin = isAdmin;
+        }
+    }
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
     	setAuthenticationFailureHandler(new JWTAuthenticationFailureHandler());
@@ -60,14 +79,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Integer codigo = ((UserSS) auth.getPrincipal()).getCodigo();
 		String nome = ((UserSS) auth.getPrincipal()).getUsername();
 		String nomeCompleto = ((UserSS) auth.getPrincipal()).getNomeCompleto();
-        String token = jwtUtil.generateToken(nome);
-        String perfil = ((UserSS) auth.getPrincipal()).isAdmin() + "";
+        String token = "Bearer " + jwtUtil.generateToken(nome);
+        Boolean isAdmin = ((UserSS) auth.getPrincipal()).isAdmin();
 
-        res.addHeader("Authorization", "Bearer " + token);
-        res.addHeader("User_codigo", codigo.toString());
-        res.addHeader("User_nome", nome);
-        res.addHeader("User_nomeCompleto", nomeCompleto);
-        res.addHeader("User_perfil", perfil);
+        ResponseBody responseBody = new ResponseBody(codigo, nome, nomeCompleto, token, isAdmin);
+        PrintWriter out = res.getWriter();
+        res.setContentType("application/json");
+        res.setCharacterEncoding("UTF-8");
+        out.print(JsonHelper.toJson(responseBody));
+        out.flush();
 	}
 	
 	private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler {
