@@ -1,9 +1,9 @@
 <template>
-  <v-app v-if="this.$route.name === 'Login'">
+  <core-template-default v-if="this.$route.name === 'Inicio'"/>
+  <v-app v-else>
     <loading />
     <router-view />
   </v-app>
-  <core-template-default v-else/>
 </template>
 
 <script>

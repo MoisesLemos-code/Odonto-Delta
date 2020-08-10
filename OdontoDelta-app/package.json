@@ -68,6 +68,7 @@
       "eslint:recommended"
     ],
     "rules": {
+      "no-unused-vars": "off",
       "quotes": [
         2,
         "single",

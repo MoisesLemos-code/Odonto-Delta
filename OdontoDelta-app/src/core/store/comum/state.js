@@ -22,7 +22,7 @@ export default {
         loadingMessage: 'Por favor, aguarde...',
     },
     notificacao: {
-        cor: 'error',
+        cor: '',
         titulo: '',
         mensagem: '',
         mostrar: false
